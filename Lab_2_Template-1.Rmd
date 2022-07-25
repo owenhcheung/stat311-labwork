@@ -91,11 +91,10 @@ negative departure delays as well as positive departure delays in the hundreds s
 ```{r, include=TRUE}
 data = nycflights
 
-mean_and_med <- data %>%
-  group_by(origin) %>%
-  summarize(mean=mean(dep_delay), median=median(dep_delay))
+newset <- data %>%
+  mutate(delayed = dep_delay > 5) #this should work
 
-mean_and_med
+head(newset)
 ```
 
 
@@ -106,7 +105,14 @@ mean_and_med
 <!-- Hint:  R treats the value `TRUE` as 1 and `FALSE` as 0. So, to count the number of times a certain variable is equal to `TRUE`, you can use the `sum()` operation on that variable. The `more_boys` example in the tutorial may help. -->
 
 ```{r, include=TRUE}
+data = nycflights
 
+newset2 <- newset %>%
+  group_by(origin) %>%
+  #add_count() %>%
+  summarize(total=n(), num_delayed=sum(delayed))
+
+newset2
 ```
 
 
@@ -115,12 +121,13 @@ mean_and_med
 <!-- Which airport had the highest percentage of delayed flights? If you choose to use R to answer this question, write your code in the below code chunk.-->
 
 ```{r, include=FALSE}
-
+checkp <- transform(newset2, percent_delayed = num_delayed / total)
+checkp
 ```
 
 <!-- The above code chunk will not appear in your knitted file (due to the "include=FALSE" option). Please use the space below to state your answer to part e). -->
 
-
+EWR had the highest percentage of delayed flights with 35% compared to JFK with 29% and LGA with 26%
 
 * * *
 
