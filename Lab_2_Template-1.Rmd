@@ -254,7 +254,12 @@ No, it doesn't seem like the two variables exerany and genhealth are independent
 
 #### Proposed Statistical Method
 
-<!-- Use this space to propose an appropriate statistical method. -->
+Since there are 2 numerical variables, we can use a histogram to analyze the data. 
+We chose this method because we feel as though it works the best with 2 numerical variables. 
+Also, we wanted to know if the mother's age had an influence in the development of the child, 
+or if older mothers would produce more premie babies. 
+
+We could also use a scatter plot with x being mother's age and y being lengths of pregnancy. It just depends on which method shows the correlation between the 2 variables best. 
 
 
 
@@ -267,8 +272,7 @@ No, it doesn't seem like the two variables exerany and genhealth are independent
 
 #### Proposed Statistical Method
 
-<!-- Use this space to propose an appropriate statistical method. -->
-
+Since there are 2 categorical variables, in the maturity status of the mother and the premie status of the baby, we can use a chi-squared test. Using a chi-square test, we can test if there is a correlation between the staus of the mother and premie status of the baby, or if it is due to random chance. 
 
 
 ### Research Question 3
@@ -280,7 +284,7 @@ No, it doesn't seem like the two variables exerany and genhealth are independent
 
 #### Proposed Statistical Method
 
-<!-- Use this space to propose an appropriate statistical method. -->
+In this question, there is 1 categorical and 1 numerical variable. As such, we can run a t-test to see if the average weight gained by the baby when the mother smokes is greater or less than when the mother doesn't smoke. 
 
 
 
