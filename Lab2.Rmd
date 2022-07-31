@@ -1,0 +1,291 @@
+---
+title: "STAT 311 Lab 2"
+author: "Steven Tran & Owen Cheung"
+date: "Tuesday, July 26, 2022 @ 11:59pm"
+output:
+  pdf_document: default
+  html_document: default
+subtitle: Group 17
+---
+
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+<!-- +  This lab is due on Friday July 22 by midnight. No late work is accepted. -->
+<!-- +  Please answer ALL questions (including those that do not involve R) in the locations marked in this template. Remember to periodically **knit** your document to check that the output appears as you want it to.  -->
+<!-- +  You will need to upload this document in CANVAS. Please be sure to check that your file was uploaded correctly. It does not hurt to screenshot verification of the upload as CANVAS can be glitchy on occasion. -->
+<!-- +  Please answer the questions in the order in which they are posed. Write in complete sentences, and support your answers where asked.  -->
+<!-- +  To submit this assignment, you should knit your document to html and either print or save the file as a pdf. -->
+
+<!-- +  NOTE: to view the official R documentation for any function, type `?function_name` in the R console. For example, to view the documentation for the 'ggplot' function, enter `?ggplot` in the console. Keep in mind this will only work if you have loaded the necessary libraries. -->
+
+
+* * *
+
+## Exercise 1: R Practice
+
+<!-- This lab exercise refers to the same  flights data. The goal here is to study how departure delays vary by departing airport. The code chunk below loads the appropriate libraries and the relevant data set loaded in your RMarkdown file.  -->
+
+```{r, include=FALSE}
+# load the appropriate libraries
+library(tidyverse)
+library(openintro)
+library(ggplot2)
+
+# load the relevant data set
+source("http://www.openintro.org/stat/data/nycflights.R")
+```
+
+### Part a)
+
+<!-- First, create a visual summary of the `dep_delay` variable, broken down by departing airport (`origin`). Since `dep_delay` is quantitative and `origin` is categorical, a nice option is side-by-side boxplots of `dep_delay` for each origin airport. Create this graphic and describe what you see. -->
+
+<!-- Hint: To create side by side boxplots using `ggplot`, we should specify: -->
+<!--   * `data = nycflights` -->
+<!--   * `aes(x=origin, y=dep_delay)` -->
+<!--   *  `geom_boxplot` -->
+
+```{r, include=TRUE}
+data = nycflights
+
+bplots <- ggplot(data, aes(x=origin, y=dep_delay)) + 
+  geom_boxplot()
+
+bplots
+```
+
+<!-- Explain why this is perhaps not the most useful visual in the space below. -->
+I think that one reason this might not be the most useful visual as the boxplots are all extremely hard to read due to the scale of the plots and because the data points are all clustered together. You really can't the difference between all 3 nor the distrubutions.
+
+### Part b)
+
+<!-- Next, let's compare numerical summaries of `dep_delay` across the three `origin` airports. Using `group_by()` and `summarize()`, print out the mean and median `dep_delay` for each of the three `origin` airports. -->
+
+```{r, include=TRUE}
+data = nycflights
+
+mean_and_med <- data %>%
+  group_by(origin) %>%
+  summarize(mean=mean(dep_delay), median=median(dep_delay))
+
+mean_and_med
+```
+
+
+### Part c)
+
+<!-- What explains the big differences between the means and the medians? Based on the shape of the distributions, do you prefer to compare the airports using the mean or the median? Give your answer in the space below. (No additional code is necessary to answer this question.)-->
+
+One explanation for the large difference between the means and the medians would be that there are a lot of negative departure delays as well as positive departure delays in the hundreds so if you took a mean/average of that group you would be more likely to get a positive number leaning more towards the positive departure delays while if you took a median of the group its reasonable to get a negative number since there are a large quantity of negative departure delays in the group. I think that I would want to use mean since it might be more representative of the spread of the data
+
+Another explanation could be that there are a lot of outliers in the data. The big difference between the means and the medians could probably be explained by these outliers. Even in the boxplot, there seems to be a large portion of the data clustered around the 0 departure delay time and some outliers as big as 1000. Thus, with this in mind, it's better to use the median as it is less susceptible to large outliers. 
+
+### Part d)
+
+<!-- For this next part, suppose we don't care about the average delay time of departing flights, but we do care about the percentage of flights leaving from each airport that were delayed. For practical purposes, let's suppose that any flight that is delayed for less than 5 minutes is basically on time, while any flight delayed for 5 minutes or more is "delayed". -->
+
+<!-- Now `mutate` the `nycflights` dataset to contain a new variable called `delayed`, which stores `TRUE` if `dep_delay > 5` and `FALSE` otherwise. *Hint: Refer to the "Manipulating a Dataset" section of the R tutorial, and specifically to the `more_boys` example.* -->
+
+```{r, include=TRUE}
+data = nycflights
+
+newset <- data %>%
+  mutate(delayed = dep_delay > 5) #this should work
+
+head(newset)
+```
+
+
+### Part e)
+
+<!-- Group flights by origin airport and display the number of delayed flights for each origin airport along with the number of total flights for each origin airport. Include your code in the below chunk. Make sure your answer is printed in your knitted file. -->
+
+<!-- Hint:  R treats the value `TRUE` as 1 and `FALSE` as 0. So, to count the number of times a certain variable is equal to `TRUE`, you can use the `sum()` operation on that variable. The `more_boys` example in the tutorial may help. -->
+
+```{r, include=TRUE}
+data = nycflights
+
+newset2 <- newset %>%
+  group_by(origin) %>%
+  #add_count() %>%
+  summarize(total=n(), num_delayed=sum(delayed))
+
+newset2
+```
+
+
+### Part f)
+
+<!-- Which airport had the highest percentage of delayed flights? If you choose to use R to answer this question, write your code in the below code chunk.-->
+
+```{r, include=FALSE}
+checkp <- transform(newset2, percent_delayed = num_delayed / total)
+checkp
+```
+
+<!-- The above code chunk will not appear in your knitted file (due to the "include=FALSE" option). Please use the space below to state your answer to part e). -->
+
+EWR had the highest percentage of delayed flights with 35% compared to JFK with 29% and LGA with 26%
+
+* * *
+
+## Exercise 2:  Exercise and General Health 
+
+<!-- This homework exercise refers to the same CDC data set as Lab 2. In the lab, we explored the relationship between the categorical variables `genhlth`, a self reported measure of general health, and `smoke100`, an indicator for whether an individual has smoked 100 times in their life. In this assignment, we will explore the relationship between `genhlth` and `exerany`, where `exerany` is an indicator for whether or not an individual has exercised in the past month.  -->
+
+<!-- To start, you need to load our necessary packages, load the dataset, and tell R to order the 5 levels of `genhlth` (as in the lab). -->
+
+```{r, include=FALSE}
+library(tidyverse)
+library(openintro)
+cdc <- read.table("http://www.stat.uchicago.edu/~yibi/s220/labs/data/cdc.dat", header=TRUE)
+cdc <- cdc %>% mutate(genhlth = ordered(genhlth, 
+            levels=c("poor", "fair", "good", "very good", "excellent"))) 
+```
+
+
+### Part a)
+
+<!-- Using `mosaic::tally()`, create a two-way contingency table between `exerany` and `genhlth`. You may add margins if you like. -->
+
+```{r, include=TRUE}
+
+contingency <- table(cdc$exerany, cdc$genhlth)
+print.table(contingency)
+
+contingency_margins <- addmargins(contingency)
+print.table(contingency_margins)
+```
+
+### Part b)
+
+<!-- What proportion of the sample has exercised in the past month? What proportion of the sample reports being in excellent health?  -->
+
+<!-- You may use a specific function from lab to compute these proportions, or you may extract the appropriate numbers from your table in part a) and use R as a calculator. In either case, include your code and explain how you arrived at your answer. -->
+
+```{r, include=TRUE}
+contingency <- table(cdc$exerany, cdc$genhlth)
+print.table(contingency)
+
+contingency_margins <- addmargins(contingency)
+print.table(contingency_margins)
+
+contingency_prop <- prop.table(contingency)
+print(contingency_prop)
+```
+
+<!-- Provide your written answer in the space below. -->
+
+The proportion of those who have exercised in the past month which is the yes to the variable exerany is 14914/20000, which is 0.7457. The proportion of the sample reporting excellent health is 4657/20000 or 0.23285. These numbers are supported by both `contingency_prop` and `contingency_margins`. 
+
+
+### Part c)
+
+<!-- Among those who exercised in the past month, what proportion of them report being in excellent health? What about among those who did not exercise in the past month? -->
+
+<!-- There are a number of ways to arrive at these answers in R. The most direct way is to use prop.table(1) to get row percentages, but you may also use data subsetting, or extract the appropriate numbers from the contingency table and use R as a calculator. Any method is fine, but please show your work. -->
+
+```{r, include=TRUE}
+
+contingency_prop <- prop.table(contingency)
+print(contingency_prop)
+```
+
+<!-- Provide your written answer in the space below. -->
+
+Among the people who exersised in the past month, a proportion of about 0.19475 of them reported excellent health. Among the people who didn't exersize in the past month, only a proportion of 0.03810 of them reported excellent health. 
+
+### Part d)
+
+<!-- Make a stacked bar chart that represents the two-way table in part (a). Put the ``genhlth`` variable on the x-axis and color the bar stacks using ``exerany``.  -->
+
+```{r, include=TRUE}
+
+bar_chart <- barplot(contingency_prop, 
+                     main = "Stacked Bar chart of General Health Vs. Exercize in Last Month", 
+                     sub = "Recorded by the Behavioral Risk Factor Surveillance System (BRFSS)", 
+                     xlab = "genhlth", 
+                     ylab = "exerany", 
+                     axes = TRUE)
+```
+
+
+It seems as though most people would rate their health as very good, though those who exercize more make up more of the excellent, very good, good, and fair categories. I also see some response bias here where those who responded tended to have better health, which may perhaps mean that they had strong feelings for this topic. There doesn't seem to be a large 'no exercize group'. 
+
+
+### Part e)
+
+<!-- Make a mosaic plot that compares the self-rated general health between those who had exercised in the past month and those who hadn’t. Based on the plots, which group had better self-rated general health? -->
+
+```{r, include=TRUE}
+
+mosaic_plot <- mosaicplot(contingency_prop, 
+                          main = "Mosaic Plot of General Health Vs. Exercize in Last Month", 
+                     sub = "Recorded by the Behavioral Risk Factor Surveillance System (BRFSS)")
+```
+
+<!-- Provide your answer in the space below. -->
+
+Based on the plots, both the stacked bar chart and the mosaic plot, it seems as though those who exercized in the past month rated their general health higher than the population that didn't. It also seems like the people who didn't exercize may have been subjected to wording bias, maybe they felt bad for having not exercized. There is also response and non-response bias where there is a lot more responses from the people who exercized, and those who didn't exercize perhaps wouldn't have worse health than shown here on the graph. 
+
+
+
+
+### Part f)
+
+<!-- Are the two variables exerany and genhlth independent? Use the space below to justify your answer. -->
+
+No, it doesn't seem like the two variables exerany and genhealth are independent. The people who said they exercized in the past month tend to indicate a higher level of general health. However, all we can say is that there is a correlation, not a causation, because there many be many other confounding variables that may impact a person's general health. 
+
+
+* * *
+
+## Exercise 3:  More Research Questions
+
+<!-- From Lab 1, finally propose three research questions and indicate appropriate statistical method(s) to be used for this research/analysis. Explain why you proposed this statistical method(s). It is fine to stick with what you had already proposed if you do not think changes are needed.  -->
+
+
+### Research Question 1
+#### Proposed Question
+
+##### What is the relationship between mother's age and lengths of pregnacy in weeks?
+
+
+#### Proposed Statistical Method
+
+Since there are 2 numerical variables, we can use a histogram to analyze the data. 
+We chose this method because we feel as though it works the best with 2 numerical variables. 
+Also, we wanted to know if the mother's age had an influence in the development of the child, 
+or if older mothers would produce more premie babies. 
+
+We could also use a scatter plot with x being mother's age and y being lengths of pregnancy. It just depends on which method shows the correlation between the 2 variables best. 
+
+
+
+### Research Question 2
+#### Proposed Question
+
+##### Is there a relationship between the maturity status of the mother and the premie status of the baby?
+
+
+
+#### Proposed Statistical Method
+
+Since there are 2 categorical variables, in the maturity status of the mother and the premie status of the baby, we can use a chi-squared test. Using a chi-square test, we can test if there is a correlation between the staus of the mother and premie status of the baby, or if it is due to random chance. 
+
+
+### Research Question 3
+#### Proposed Question
+
+##### Is there a trend between the weight gained by the baby measured in pounds and the smoking status of the mother?
+
+
+
+#### Proposed Statistical Method
+
+In this question, there is 1 categorical and 1 numerical variable. As such, we can run a t-test to see if the average weight gained by the baby when the mother smokes is greater or less than when the mother doesn't smoke. 
+
+
+
