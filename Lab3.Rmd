@@ -1,0 +1,335 @@
+---
+title: 'STAT 311 -- Lab 3'
+subtitle: 'Group ___'
+author: 'Group Member Names Here'
+date: 'Wednesday, August 3, 2022 @ 11:59pm'
+output:
+  html_document: default
+---
+
+<!-- This lab is due on Wednesday, August 3 by midnight. No late work is accepted. -->
+
+<!-- Please answer ALL questions (including those that do not involve R) in the locations marked in this template. Remember to periodically **knit** your document to check that the output appears as you want it to; you will be turning in your knit html document. -->
+
+<!-- You will need to upload this document in CANVAS. Please be sure to check that your file was uploaded correctly. It does not hurt to screenshot verification of the upload as CANVAS can be glitchy on occasion. -->
+
+<!-- Please answer the questions in the order in which they are posed. Write in complete sentences, and support your answers where asked. -->
+
+<!-- Throughout this assignment, PLEASE USE COMMENTS TO EXPLAIN WHAT YOUR CODE IS DOING. To make a comment in a code chunk, start the line with `#`. If you do not comment your code, you are much less likely to get partial credit if your response is incorrect. -->
+
+<!-- The code chunk below is our setup chunk. Do not make any changes to this code. -->
+
+```{r setup, include=FALSE, message=FALSE, warning=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+library(dplyr)
+library(ggplot2)
+cdc <- read.table("http://www.stat.uchicago.edu/~yibi/s220/labs/data/cdc.dat", header=TRUE)
+```
+
+* * *
+
+## Question 1: Exercise and General Health 
+
+<!-- This lab exercise refers to a data set from CDC. The goal is to explore the relationship between the categorical variables `genhlth`, a self reported measure of general health, and `smoke100`, an indicator for whether an individual has smoked 100 times in their life. In this assignment, we will explore the relationship between `genhlth` and `exerany`, where `exerany` is an indicator for whether or not an individual has exercised in the past month.  -->
+
+<!-- To start, you need to load our necessary packages, load the data set, and tell R to order the 5 levels of `genhlth`. This is done in the code chunk below. -->
+
+```{r, echo=FALSE, message=FALSE, warning=FALSE}
+library(tidyverse)
+library(openintro)
+library(statsr)
+cdc <- read.table("http://www.stat.uchicago.edu/~yibi/s220/labs/data/cdc.dat", header=TRUE)
+cdc <- cdc %>% mutate(genhlth = ordered(genhlth, 
+            levels=c("poor", "fair", "good", "very good", "excellent"))) 
+```
+
+
+### Part a) 
+
+<!-- Use `mosaic::tally()` to create a two-way contingency table between `exerany` and `genhlth`. You may add margins if you like.  -->
+
+```{r, include=TRUE, message=FALSE}
+
+```
+
+### Part b) 
+
+<!-- What proportion of the sample has exercised in the past month? What proportion of the sample reports being in excellent health? *You may use a specific function from lab to compute these proportions, or you may extract the appropriate numbers from your table in part (a) and use R as a calculator. In either case, include your code and explain how you arrived at your answer.* -->
+
+```{r, include=TRUE, message=FALSE}
+
+```
+
+<!-- Use the space below to explain how you arrived at the above answer. -->
+
+
+
+### Part c) 
+
+<!-- Among those who exercised in the past month, what proportion of them report being in excellent health? What about among those who did not exercise in the past month? *There are a number of ways to arrive at these answers in R. The most direct way is to use prop.table(1) to get row percentages, but you may also use data subsetting, or extract the appropriate numbers from the contingency table and use R as a calculator. Any method is fine, but please show your work. * -->
+
+```{r, include=TRUE}
+
+```
+
+<!-- Please use the space below to state your result (in a complete sentence). -->
+
+
+
+### Part d) 
+
+<!-- Make a stacked bar chart that represents the two-way table in part (a). Put the ``genhlth`` variable on the x-axis and color the bar stacks using ``exerany``.  -->
+
+```{r, include=TRUE}
+
+```
+
+### Part e) 
+
+<!-- Make a mosaic plot that compares the self-rated general health between those who had exercised in the past month and those who hadn’t. Based on the plots, which group had better self-rated general health? -->
+
+```{r, include=TRUE}
+
+```
+
+
+### Part f)
+
+<!-- Are the two variables exerany and genhlth independent? Justify your answer using the space below. -->
+
+
+
+
+## Question 2: Linear Regression 
+
+<!-- In this question, you will be repeating *all* the exercises in the Introduction to Linear Regression lab that was covered in the quiz session by the TAs. -->
+
+<!-- To start, we will load the data for the 2011 MLB season. -->
+
+```{r, include=TRUE}
+# reading in (loading) the data set
+mlb <- read.csv("https://anna-neufeld.github.io/Stat311/oiLabs/Week10/mlb11.csv")
+```
+
+
+### Exercise 1: 
+
+<!-- Use `geom_point()` to make a plot that explores the relationship between runs and at_bats. -->
+
+```{r, include=TRUE}
+
+```
+
+<!-- Does the relationship look linear? Base your answer on the above plot. -->
+
+
+
+
+### Exercise 2:
+
+<!-- Describe the relationship between the two variables plotted above. Mention the form, direction, and strength of the relationship, as well as any unusual observations. -->
+
+<!-- Please use the space below to state your answer. -->
+
+
+
+
+### Exercise 3: 
+
+**Recall:** The correlation coefficient $r$, is calculated using the below formula.
+
+$$r = \dfrac{1}{n} \sum_{i=1}^{n} z_x z_y = \dfrac{1}{n} \sum_{i=1}^{n} \left( \dfrac{x_i - \bar{x}}{s_x} \right) \left( \dfrac{y_i - \bar{y}}{s_y} \right)$$
+This value takes a very long time to compute by hand, especially when we have a lot of observations (i.e., a very large value for $n$. It is more efficient to compute this value using a programming language like R.
+
+<!-- Use the below code chunk to find the value of the correlation coefficient r. -->
+
+```{r, include=TRUE}
+
+```
+
+<!-- Restate the value of the correlation coefficient that you found above. -->
+
+
+
+
+### Exercise 4:
+
+<!-- Run `plot_ss` several times. Choose the line that does the best job of minimizing the sum of squares. -->
+
+<!-- Recall: the output from the plot_ss function provides you with the slope and intercept of the line as well as the sum of squares. -->
+
+<!-- You will need to run this code in the console because the plot_ss function is interactive. -->
+
+<!-- What slope and intercept corresponded to this "best" line? Write the equation in R using the same formatting as in exercise 3. -->
+
+
+
+
+### Exercise 5:
+
+<!-- Quiz Question: The Seattle Mariners had 5421 at bats in 2011. Suppose that you had access to the regression line but not the actual data. How many runs would you predict that the Mariners would score in 2011? -->
+
+<!-- You may use R as a calculator when answering this question, but it is not required. -->
+
+```{r, echo=FALSE, results="hide"}
+
+```
+
+<!-- Please state your answer using the space below. -->
+
+
+
+
+### Exercise 6:
+
+<!-- Was you answer to Exercise 5 an underestimate or an overestimate? In order to explain your answer, use the regression line to calculate the residual. You must show your work, meaning your code should appear in your knitted document. -->
+
+```{r, include=TRUE}
+
+```
+
+<!-- Please state your answer using the space below. -->
+
+
+
+
+### Exercise 7:
+
+<!-- Using `lm`, fit a new model that uses `homeruns` to predict `runs`. Using the estimates from the R output, write the equation of the regression line.  -->
+
+```{r, include=TRUE}
+# fit the model
+
+```
+
+<!-- Write out the equation for the regression line using the same formatting as in Exercise 3. -->
+
+
+
+
+### Exercise 8:
+
+<!-- Quiz Question: What proportion of variability in `runs` is explained by variation in `homeruns`? -->
+
+```{r, echo=FALSE, results="hide"}
+
+```
+
+<!-- Please state your answer using the space below. -->
+
+
+
+
+### Exercise 9:
+
+<!-- Quiz Question: Which of the following variables seems best to predict `runs`?
+
+<!-- (1) `stolen_bases` -->
+<!-- (2) `new_obs` -->
+<!-- (3) `new_slug` -->
+<!-- (4) `homeruns` -->
+
+<!-- You may use R-squared as your criteria. You should use code to support your answer. -->
+
+```{r, include=TRUE}
+
+```
+
+<!-- Please state your answer using the space below. -->
+
+
+
+### Exercise 10
+
+<!-- Show appropriate visual and numerical summaries of the model that you chose in the previous exercise. -->
+
+```{r, include=TRUE}
+# numerical summaries
+
+```
+
+```{r, include=TRUE}
+# visual summaries
+
+```
+
+<!-- Describe your model based on the above information. -->
+
+
+
+
+### Exercise 11
+
+<!-- Quiz Question: Which of the following variables had a negative relationship with `runs`? Do you think this answer makes sense? -->
+
+<!-- (1) wins -->
+<!-- (2) strikeouts -->
+<!-- (3) bat_avg -->
+<!-- (4) hits -->
+
+```{r, include=TRUE}
+
+```
+
+<!-- Please state your answer in the space below. -->
+
+
+
+
+### Exercise 12
+
+<!-- Show appropriate visual and numerical summaries of the model that you chosen in the previous exercise. -->
+
+```{r, include=TRUE}
+# numerical summaries
+
+```
+
+```{r, include=TRUE}
+# visual summaries
+
+```
+
+<!-- Describe your model based on the above information. -->
+
+
+
+
+
+## Question 3: Type 1 and Type 2 errors
+
+<!-- J & T each want to test if the proportion of adults in their neighborhood who have graduated from high school is 0.94, as claimed in the newspaper. -->
+
+<!-- J takes a random sample of 200 adults and uses $alpha=0.05$. T takes a random sample of 500 adults and uses $alpha=0.05$. Suppose the newspaper's percentae is actually right. -->
+
+### Part a(i)
+
+<!-- Is it possible for either J or T to make a type 1 error? If yes, who is more likely to do so? If no, why not? -->
+
+
+
+### Part a(ii)
+
+<!-- Is it possible for either J or T to make a type 2 error? If yes, who is more likely to do so? If no, why not? Use the space below to give your response. -->
+
+
+
+
+<!-- Now consider: -->
+
+<!-- J & T each want to test if the proportion of adults in their neighborhood who took chemistry in high school is 0.25, as claimed in the newspaper.  -->
+
+<!-- J takes a random sample of 200 adults and uses $alpha=0.05$. T takes a random sample of 500 adults and uses $alpha=0.05$. Suppose the newspaper's percentae is actually wrong. -->
+
+### Part b(i)
+
+<!-- Is it possible for either J or T to make a type 1 error? If yes, who is more likely to do so? If no, why not? -->
+
+
+
+### Part b(ii) 
+
+<!-- Is it possible for either J or T to make a type 2 error? If yes, who is more likely to do so? If no, why not? -->
+
+
+
