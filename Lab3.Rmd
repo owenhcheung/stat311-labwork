@@ -178,11 +178,12 @@ $$y = 0.5862x + 5112.5425$$
 <!-- You may use R as a calculator when answering this question, but it is not required. -->
 
 ```{r, echo=FALSE, results="hide"}
-
+ex5 <- 0.5862*5421 + 5112.5425
+print(ex5)
 ```
 
 <!-- Please state your answer using the space below. -->
-
+8290 runs
 
 
 
