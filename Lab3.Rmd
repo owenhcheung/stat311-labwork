@@ -117,7 +117,7 @@ mlb <- read.csv("https://anna-neufeld.github.io/Stat311/oiLabs/Week10/mlb11.csv"
 <!-- Use `geom_point()` to make a plot that explores the relationship between runs and at_bats. -->
 
 ```{r, include=TRUE}
-plot1 <- ggplot(mlb, aes(x=runs, y=at_bats)) + 
+plot1 <- ggplot(mlb, aes(x=at_bats, y=runs)) + 
   geom_point()
 
 print(plot1)
@@ -134,7 +134,7 @@ Yes this relationship looks somewhat linear because in general as x increases, y
 
 <!-- Please use the space below to state your answer. -->
 
-I think that the relationship seems to be somewhat strong and its
+I think that there seems to be a linear positive relationship between "runs" and "at bats" that is moderately strong. There may be outliers such as some of the points past 800 runs.
 
 
 ### Exercise 3: 
@@ -165,10 +165,10 @@ r = 0.610627
 <!-- You will need to run this code in the console because the plot_ss function is interactive. -->
 
 <!-- What slope and intercept corresponded to this "best" line? Write the equation in R using the same formatting as in exercise 3. -->
-coefficients: 5112.5425, 0.5862
-sum of squares: 116603.7
+coefficients: -2370.547, 0.556
+sum of squares: 126186.4
 
-$$y = 0.5862x + 5112.5425$$
+$$y = 0.556x - 2370.547$$
 
 
 ### Exercise 5:
@@ -178,12 +178,12 @@ $$y = 0.5862x + 5112.5425$$
 <!-- You may use R as a calculator when answering this question, but it is not required. -->
 
 ```{r, echo=FALSE, results="hide"}
-ex5 <- 0.5862*5421 + 5112.5425
+ex5 <- 0.556*5421 - 2370.547
 print(ex5)
 ```
 
 <!-- Please state your answer using the space below. -->
-8290 runs
+644 runs
 
 
 
@@ -192,11 +192,12 @@ print(ex5)
 <!-- Was you answer to Exercise 5 an underestimate or an overestimate? In order to explain your answer, use the regression line to calculate the residual. You must show your work, meaning your code should appear in your knitted document. -->
 
 ```{r, include=TRUE}
-
+residual <- 556 - 643.529
+print(residual)
 ```
 
 <!-- Please state your answer using the space below. -->
-
+Since the residual was negative the answer to exercise 5 was an overestimate.
 
 
 
@@ -205,12 +206,13 @@ print(ex5)
 <!-- Using `lm`, fit a new model that uses `homeruns` to predict `runs`. Using the estimates from the R output, write the equation of the regression line.  -->
 
 ```{r, include=TRUE}
-# fit the model
+ex7 <- lm(runs ~ homeruns, data = mlb)
+summary(ex7)
 
 ```
 
 <!-- Write out the equation for the regression line using the same formatting as in Exercise 3. -->
-
+$$y = 1.8345x + 415.2389$$
 
 
 
@@ -223,7 +225,7 @@ print(ex5)
 ```
 
 <!-- Please state your answer using the space below. -->
-
+From adjusted r-squared we can say that 61.32% of variability in runs was able to be explained.
 
 
 
@@ -239,11 +241,21 @@ print(ex5)
 <!-- You may use R-squared as your criteria. You should use code to support your answer. -->
 
 ```{r, include=TRUE}
+ex8_1 <- lm(runs ~ stolen_bases, data = mlb)
+summary(ex8_1)
 
+ex8_2 <- lm(runs ~ new_obs, data = mlb)
+summary(ex8_2)
+
+ex8_3 <- lm(runs ~ new_slug, data = mlb)
+summary(ex8_3)
+
+ex8_4 <- lm(runs ~ homeruns, data = mlb)
+summary(ex8_4)
 ```
 
 <!-- Please state your answer using the space below. -->
-
+new_obs seems best to predict runs as the adjusted r-squared value of 93.26% is the highest out of all four cases which means more of the variability was able to be explained.
 
 
 ### Exercise 10
@@ -251,17 +263,20 @@ print(ex5)
 <!-- Show appropriate visual and numerical summaries of the model that you chose in the previous exercise. -->
 
 ```{r, include=TRUE}
-# numerical summaries
+ex10 <- lm(runs ~ new_obs, data = mlb)
+summary(ex10)
 
 ```
 
 ```{r, include=TRUE}
 # visual summaries
+ex10_graph <- ggplot(mlb, aes(x=new_obs, y=runs)) + geom_point() + stat_smooth(method="lm", se=FALSE)
+print(ex10_graph)
 
 ```
 
 <!-- Describe your model based on the above information. -->
-
+This model seems to show a positive linear relationship between new_obs and runs that is fairly strong. There do not seem to be any outliers.
 
 
 
@@ -275,11 +290,21 @@ print(ex5)
 <!-- (4) hits -->
 
 ```{r, include=TRUE}
+ex11_1 <- lm(runs ~ wins, data = mlb)
+summary(ex11_1)
 
+ex11_2 <- lm(runs ~ strikeouts, data = mlb)
+summary(ex11_2)
+
+ex11_3 <- lm(runs ~ bat_avg, data = mlb)
+summary(ex11_3)
+
+ex11_4 <- lm(runs ~ hits, data = mlb)
+summary(ex11_4)
 ```
 
 <!-- Please state your answer in the space below. -->
-
+Strikeouts had a negative relationship with runs. This makes sense because if the player strikes out they wouldn't run.
 
 
 
@@ -289,17 +314,19 @@ print(ex5)
 
 ```{r, include=TRUE}
 # numerical summaries
-
+ex12 <- lm(runs ~ strikeouts, data = mlb)
+summary(ex12)
 ```
 
 ```{r, include=TRUE}
 # visual summaries
-
+ex12_graph <- ggplot(mlb, aes(x=strikeouts, y=runs)) + geom_point() + stat_smooth(method="lm", se=FALSE)
+print(ex12_graph)
 ```
 
 <!-- Describe your model based on the above information. -->
 
-
+This model seems to show a negative linear relationship between strikeouts and runs that is somewhat weak. There may be outliers under 600 runs.
 
 
 
