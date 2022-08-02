@@ -1,7 +1,7 @@
 ---
 title: 'STAT 311 -- Lab 3'
 subtitle: 'Group ___'
-author: 'Group Member Names Here'
+author: 'Owen Cheung, Steven Tran'
 date: 'Wednesday, August 3, 2022 @ 11:59pm'
 output:
   html_document: default
@@ -117,11 +117,14 @@ mlb <- read.csv("https://anna-neufeld.github.io/Stat311/oiLabs/Week10/mlb11.csv"
 <!-- Use `geom_point()` to make a plot that explores the relationship between runs and at_bats. -->
 
 ```{r, include=TRUE}
+plot1 <- ggplot(mlb, aes(x=runs, y=at_bats)) + 
+  geom_point()
 
+print(plot1)
 ```
 
 <!-- Does the relationship look linear? Base your answer on the above plot. -->
-
+Yes this relationship looks somewhat linear because in general as x increases, y increases as well. 
 
 
 
@@ -131,7 +134,7 @@ mlb <- read.csv("https://anna-neufeld.github.io/Stat311/oiLabs/Week10/mlb11.csv"
 
 <!-- Please use the space below to state your answer. -->
 
-
+I think that the relationship seems to be somewhat strong and its
 
 
 ### Exercise 3: 
@@ -144,11 +147,12 @@ This value takes a very long time to compute by hand, especially when we have a 
 <!-- Use the below code chunk to find the value of the correlation coefficient r. -->
 
 ```{r, include=TRUE}
-
+test <- cor(mlb$runs, mlb$at_bats)
+print(test)
 ```
 
 <!-- Restate the value of the correlation coefficient that you found above. -->
-
+r = 0.610627
 
 
 
@@ -161,8 +165,10 @@ This value takes a very long time to compute by hand, especially when we have a 
 <!-- You will need to run this code in the console because the plot_ss function is interactive. -->
 
 <!-- What slope and intercept corresponded to this "best" line? Write the equation in R using the same formatting as in exercise 3. -->
+coefficients: 5112.5425, 0.5862
+sum of squares: 116603.7
 
-
+$$y = 0.5862x + 5112.5425$$
 
 
 ### Exercise 5:
