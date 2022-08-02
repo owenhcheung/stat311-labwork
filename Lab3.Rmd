@@ -339,6 +339,12 @@ This model seems to show a negative linear relationship between strikeouts and r
 ### Part a(i)
 
 <!-- Is it possible for either J or T to make a type 1 error? If yes, who is more likely to do so? If no, why not? -->
+type 1 error: reject null hypothesis when null is true
+type 2 error: reject alternate hypothesis when alternate is true
+
+null hypothesis: newspaper percentage is right
+alternate hypothesis: newspaper percentage is false
+
 
 
 
