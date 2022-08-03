@@ -121,14 +121,22 @@ It seems as though most people would rate their health as very good, though thos
 <!-- Make a mosaic plot that compares the self-rated general health between those who had exercised in the past month and those who hadn’t. Based on the plots, which group had better self-rated general health? -->
 
 ```{r, include=TRUE}
+
+mosaic_plot <- mosaicplot(contingency_prop, 
+                          main = "Mosaic Plot of General Health Vs. Exercize in Last Month", 
+                     sub = "Recorded by the Behavioral Risk Factor Surveillance System (BRFSS)")
+
+
 ```
+Based on the plots, both the stacked bar chart and the mosaic plot, it seems as though those who exercized in the past month rated their general health higher than the population that didn't. It also seems like the people who didn't exercize may have been subjected to wording bias, maybe they felt bad for having not exercized. There is also response and non-response bias where there is a lot more responses from the people who exercized, and those who didn't exercize perhaps wouldn't have worse health than shown here on the graph. 
+
 
 
 ### Part f)
 
 <!-- Are the two variables exerany and genhlth independent? Justify your answer using the space below. -->
 
-
+No, it doesn't seem like the two variables exerany and genhealth are independent. The people who said they exercized in the past month tend to indicate a higher level of general health. However, all we can say is that there is a correlation, not a causation, because there many be many other confounding variables that may impact a person's general health. 
 
 
 ## Question 2: Linear Regression 
