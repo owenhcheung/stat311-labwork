@@ -139,6 +139,7 @@ Based on the plots, both the stacked bar chart and the mosaic plot, it seems as 
 No, it doesn't seem like the two variables exerany and genhealth are independent. The people who said they exercized in the past month tend to indicate a higher level of general health. However, all we can say is that there is a correlation, not a causation, because there many be many other confounding variables that may impact a person's general health. 
 
 
+
 ## Question 2: Linear Regression 
 
 <!-- In this question, you will be repeating *all* the exercises in the Introduction to Linear Regression lab that was covered in the quiz session by the TAs. -->
@@ -246,10 +247,7 @@ Since the residual was negative the answer to exercise 5 was an overestimate.
 ```{r, include=TRUE}
 ex7 <- lm(runs ~ homeruns, data = mlb)
 summary(ex7)
-<<<<<<< HEAD
-=======
 
->>>>>>> adb9f85a01bd25d1989adbf36c59b0045b80dde4
 ```
 
 <!-- Write out the equation for the regression line using the same formatting as in Exercise 3. -->
@@ -282,12 +280,13 @@ From adjusted r-squared we can say that 61.32% of variability in runs was able t
 ```{r, include=TRUE}
 ex8_1 <- lm(runs ~ stolen_bases, data = mlb)
 summary(ex8_1)
-<<<<<<< HEAD
+
+
 ex8_2 <- lm(runs ~ new_obs, data = mlb)
 summary(ex8_2)
 ex8_3 <- lm(runs ~ new_slug, data = mlb)
 summary(ex8_3)
-=======
+
 
 ex8_2 <- lm(runs ~ new_obs, data = mlb)
 summary(ex8_2)
@@ -295,7 +294,7 @@ summary(ex8_2)
 ex8_3 <- lm(runs ~ new_slug, data = mlb)
 summary(ex8_3)
 
->>>>>>> adb9f85a01bd25d1989adbf36c59b0045b80dde4
+
 ex8_4 <- lm(runs ~ homeruns, data = mlb)
 summary(ex8_4)
 ```
@@ -311,20 +310,14 @@ new_obs seems best to predict runs as the adjusted r-squared value of 93.26% is 
 ```{r, include=TRUE}
 ex10 <- lm(runs ~ new_obs, data = mlb)
 summary(ex10)
-<<<<<<< HEAD
-=======
 
->>>>>>> adb9f85a01bd25d1989adbf36c59b0045b80dde4
 ```
 
 ```{r, include=TRUE}
 # visual summaries
 ex10_graph <- ggplot(mlb, aes(x=new_obs, y=runs)) + geom_point() + stat_smooth(method="lm", se=FALSE)
 print(ex10_graph)
-<<<<<<< HEAD
-=======
 
->>>>>>> adb9f85a01bd25d1989adbf36c59b0045b80dde4
 ```
 
 <!-- Describe your model based on the above information. -->
@@ -344,12 +337,13 @@ This model seems to show a positive linear relationship between new_obs and runs
 ```{r, include=TRUE}
 ex11_1 <- lm(runs ~ wins, data = mlb)
 summary(ex11_1)
-<<<<<<< HEAD
+
+
 ex11_2 <- lm(runs ~ strikeouts, data = mlb)
 summary(ex11_2)
 ex11_3 <- lm(runs ~ bat_avg, data = mlb)
 summary(ex11_3)
-=======
+
 
 ex11_2 <- lm(runs ~ strikeouts, data = mlb)
 summary(ex11_2)
@@ -357,7 +351,7 @@ summary(ex11_2)
 ex11_3 <- lm(runs ~ bat_avg, data = mlb)
 summary(ex11_3)
 
->>>>>>> adb9f85a01bd25d1989adbf36c59b0045b80dde4
+
 ex11_4 <- lm(runs ~ hits, data = mlb)
 summary(ex11_4)
 ```
@@ -396,7 +390,6 @@ This model seems to show a negative linear relationship between strikeouts and r
 <!-- J takes a random sample of 200 adults and uses $alpha=0.05$. T takes a random sample of 500 adults and uses $alpha=0.05$. Suppose the newspaper's percentae is actually right. -->
 
 ### Part a(i)
-
 <!-- Is it possible for either J or T to make a type 1 error? If yes, who is more likely to do so? If no, why not? -->
 type 1 error: reject null hypothesis when null is true
 type 2 error: reject alternate hypothesis when alternate is true
