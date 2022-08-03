@@ -202,6 +202,10 @@ Since the residual was negative the answer to exercise 5 was an overestimate.
 ```{r, include=TRUE}
 ex7 <- lm(runs ~ homeruns, data = mlb)
 summary(ex7)
+<<<<<<< HEAD
+=======
+
+>>>>>>> adb9f85a01bd25d1989adbf36c59b0045b80dde4
 ```
 
 <!-- Write out the equation for the regression line using the same formatting as in Exercise 3. -->
@@ -234,10 +238,20 @@ From adjusted r-squared we can say that 61.32% of variability in runs was able t
 ```{r, include=TRUE}
 ex8_1 <- lm(runs ~ stolen_bases, data = mlb)
 summary(ex8_1)
+<<<<<<< HEAD
 ex8_2 <- lm(runs ~ new_obs, data = mlb)
 summary(ex8_2)
 ex8_3 <- lm(runs ~ new_slug, data = mlb)
 summary(ex8_3)
+=======
+
+ex8_2 <- lm(runs ~ new_obs, data = mlb)
+summary(ex8_2)
+
+ex8_3 <- lm(runs ~ new_slug, data = mlb)
+summary(ex8_3)
+
+>>>>>>> adb9f85a01bd25d1989adbf36c59b0045b80dde4
 ex8_4 <- lm(runs ~ homeruns, data = mlb)
 summary(ex8_4)
 ```
@@ -253,12 +267,20 @@ new_obs seems best to predict runs as the adjusted r-squared value of 93.26% is 
 ```{r, include=TRUE}
 ex10 <- lm(runs ~ new_obs, data = mlb)
 summary(ex10)
+<<<<<<< HEAD
+=======
+
+>>>>>>> adb9f85a01bd25d1989adbf36c59b0045b80dde4
 ```
 
 ```{r, include=TRUE}
 # visual summaries
 ex10_graph <- ggplot(mlb, aes(x=new_obs, y=runs)) + geom_point() + stat_smooth(method="lm", se=FALSE)
 print(ex10_graph)
+<<<<<<< HEAD
+=======
+
+>>>>>>> adb9f85a01bd25d1989adbf36c59b0045b80dde4
 ```
 
 <!-- Describe your model based on the above information. -->
@@ -278,10 +300,20 @@ This model seems to show a positive linear relationship between new_obs and runs
 ```{r, include=TRUE}
 ex11_1 <- lm(runs ~ wins, data = mlb)
 summary(ex11_1)
+<<<<<<< HEAD
 ex11_2 <- lm(runs ~ strikeouts, data = mlb)
 summary(ex11_2)
 ex11_3 <- lm(runs ~ bat_avg, data = mlb)
 summary(ex11_3)
+=======
+
+ex11_2 <- lm(runs ~ strikeouts, data = mlb)
+summary(ex11_2)
+
+ex11_3 <- lm(runs ~ bat_avg, data = mlb)
+summary(ex11_3)
+
+>>>>>>> adb9f85a01bd25d1989adbf36c59b0045b80dde4
 ex11_4 <- lm(runs ~ hits, data = mlb)
 summary(ex11_4)
 ```
