@@ -387,24 +387,35 @@ This model seems to show a negative linear relationship between strikeouts and r
 
 <!-- J & T each want to test if the proportion of adults in their neighborhood who have graduated from high school is 0.94, as claimed in the newspaper. -->
 
-<!-- J takes a random sample of 200 adults and uses $alpha=0.05$. T takes a random sample of 500 adults and uses $alpha=0.05$. Suppose the newspaper's percentae is actually right. -->
+<!-- J takes a random sample of 200 adults and uses $alpha=0.05$. T takes a random sample of 500 adults and uses $alpha=0.05$. Suppose the newspaper's percentage is actually right. -->
+
+
+Null hypothesis: newspaper percentage is right
+Alternate hypothesis: newspaper percentage is false
+
+Type 1 error: reject null hypothesis when null is true
+Type 1 Error: Called alpha Only depends on the value of alpha, and sample size doesn’t matter
+
+
+Type 2 error: reject alternate hypothesis when alternate is true
+Type 2 error: This is called beta, this error rate decreases as your sample size increases
+
 
 ### Part a(i)
 <!-- Is it possible for either J or T to make a type 1 error? If yes, who is more likely to do so? If no, why not? -->
-type 1 error: reject null hypothesis when null is true
-type 2 error: reject alternate hypothesis when alternate is true
 
-null hypothesis: newspaper percentage is right
-alternate hypothesis: newspaper percentage is false
+Yes, it is possible for either J or T to make a type 1 error. For J and T, this would mean rejecting the null hypothesis that the proportion of adults in their neighborhood who have graduated from high school is equal to 0.94 when that proportion is indeed true. 
 
-
+Both are equally likely to make a type 1 error since this error only depends on the value of $alpha and the sample size doesn't really matter in this case. 
 
 
 ### Part a(ii)
 
 <!-- Is it possible for either J or T to make a type 2 error? If yes, who is more likely to do so? If no, why not? Use the space below to give your response. -->
 
+Yes, it is possible for either J or T to make a type 2 error. This means that J and T reject the alternative hypothesis that the proportion of adults in their neighborhood who've graduated from high school does not equal to 0.94, when the proportion truly isn't equal to 0.94. 
 
+J is more likely to make a type 2 error since his sample size of 200 is a lot smaller than T's sample size of 500. This is because the error rate decreases as the sample size increases. 
 
 
 <!-- Now consider: -->
@@ -413,12 +424,35 @@ alternate hypothesis: newspaper percentage is false
 
 <!-- J takes a random sample of 200 adults and uses $alpha=0.05$. T takes a random sample of 500 adults and uses $alpha=0.05$. Suppose the newspaper's percentae is actually wrong. -->
 
+
+# Null hypothesis: newspaper percentage is right
+# Alternate hypothesis: newspaper percentage is false
+
+# Type 1 error: reject null hypothesis when null is true
+# Type 1 Error: Called alpha Only depends on the value of alpha, and sample size doesn’t matter
+
+
+# Type 2 error: reject alternate hypothesis when alternate is true
+# Type 2 error: This is called beta, this error rate decreases as your sample size increases
+
+
+
 ### Part b(i)
 
 <!-- Is it possible for either J or T to make a type 1 error? If yes, who is more likely to do so? If no, why not? -->
 
+It is not possible for either J or T to make a Type 1 error since we know that the null hypothesis that the newspaper's proportion of adults in their neighborhood who took chemistry of 0.25 is incorrect in the first place so even if we reject the null hypothesis, it isn't true to begin with to make that error. 
+
+Type 1 error is also dependent in $alpha and not sample size so since they both have the same alpha value, they have equal likelihood of commiting an error if it was possible. It isn't in this case. 
 
 
 ### Part b(ii) 
 
 <!-- Is it possible for either J or T to make a type 2 error? If yes, who is more likely to do so? If no, why not? -->
+
+
+Yes, it is possible for either J or T to make a type 2 error. This means that J and T reject the alternative hypothesis that the proportion of adults in their neighborhood who've taken high school chemostry from high school does not equal to 0.25, when the proportion truly isn't equal to 0.94. 
+
+J is more likely to make a type 2 error since his sample size of 200 is a lot smaller than T's sample size of 500. This is because the error rate decreases as the sample size increases. 
+
+
