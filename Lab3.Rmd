@@ -416,9 +416,9 @@ Both are equally likely to make a type 1 error since this error only depends on 
 
 <!-- Is it possible for either J or T to make a type 2 error? If yes, who is more likely to do so? If no, why not? Use the space below to give your response. -->
 
-Yes, it is possible for either J or T to make a type 2 error. This means that J and T reject the alternative hypothesis that the proportion of adults in their neighborhood who've graduated from high school does not equal to 0.94, when the proportion truly isn't equal to 0.94. 
+No, it isn't possible for either J or T to make a type 2 error. This means that J and T reject the alternative hypothesis that the proportion of adults in their neighborhood who've graduated from high school does not equal to 0.94, when the proportion truly isn't equal to 0.94. However, we know that the proportion truly is equal to 0.94. 
 
-J is more likely to make a type 2 error since his sample size of 200 is a lot smaller than T's sample size of 500. This is because the error rate decreases as the sample size increases. 
+J is more likely to make a type 2 error since his sample size of 200 is a lot smaller than T's sample size of 500. This is because the error rate decreases as the sample size increases. It wouldn't really matter in this case though. 
 
 
 <!-- Now consider: -->
