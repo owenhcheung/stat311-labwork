@@ -260,6 +260,8 @@ $$y = 1.8345x + 415.2389$$
 <!-- Quiz Question: What proportion of variability in `runs` is explained by variation in `homeruns`? -->
 
 ```{r, echo=FALSE, results="hide"}
+ex8 <- lm(runs ~ homeruns, data = mlb)
+summary(ex8)
 ```
 
 <!-- Please state your answer using the space below. -->
