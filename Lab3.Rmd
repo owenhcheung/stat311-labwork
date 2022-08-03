@@ -391,15 +391,15 @@ This model seems to show a negative linear relationship between strikeouts and r
 <!-- J takes a random sample of 200 adults and uses $alpha=0.05$. T takes a random sample of 500 adults and uses $alpha=0.05$. Suppose the newspaper's percentage is actually right. -->
 
 
-Null hypothesis: newspaper percentage is right
-Alternate hypothesis: newspaper percentage is false
+<!-- Null hypothesis: newspaper percentage is right
+<!-- Alternate hypothesis: newspaper percentage is false
 
-Type 1 error: reject null hypothesis when null is true
+<!-- Type 1 error: reject null hypothesis when null is true
 Type 1 Error: Called alpha Only depends on the value of alpha, and sample size doesn’t matter
 
 
-Type 2 error: reject alternate hypothesis when alternate is true
-Type 2 error: This is called beta, this error rate decreases as your sample size increases
+<!-- Type 2 error: reject alternate hypothesis when alternate is true
+T<!-- ype 2 error: This is called beta, this error rate decreases as your sample size increases
 
 
 ### Part a(i)
@@ -424,17 +424,6 @@ J is more likely to make a type 2 error since his sample size of 200 is a lot sm
 <!-- J & T each want to test if the proportion of adults in their neighborhood who took chemistry in high school is 0.25, as claimed in the newspaper.  -->
 
 <!-- J takes a random sample of 200 adults and uses $alpha=0.05$. T takes a random sample of 500 adults and uses $alpha=0.05$. Suppose the newspaper's percentae is actually wrong. -->
-
-
-# Null hypothesis: newspaper percentage is right
-# Alternate hypothesis: newspaper percentage is false
-
-# Type 1 error: reject null hypothesis when null is true
-# Type 1 Error: Called alpha Only depends on the value of alpha, and sample size doesn’t matter
-
-
-# Type 2 error: reject alternate hypothesis when alternate is true
-# Type 2 error: This is called beta, this error rate decreases as your sample size increases
 
 
 
