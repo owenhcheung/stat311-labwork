@@ -49,6 +49,13 @@ cdc <- cdc %>% mutate(genhlth = ordered(genhlth,
 <!-- Use `mosaic::tally()` to create a two-way contingency table between `exerany` and `genhlth`. You may add margins if you like.  -->
 
 ```{r, include=TRUE, message=FALSE}
+
+contingency <- table(cdc$exerany, cdc$genhlth)
+print.table(contingency)
+
+contingency_margins <- addmargins(contingency)
+print.table(contingency_margins)
+
 ```
 
 ### Part b) 
@@ -56,10 +63,22 @@ cdc <- cdc %>% mutate(genhlth = ordered(genhlth,
 <!-- What proportion of the sample has exercised in the past month? What proportion of the sample reports being in excellent health? *You may use a specific function from lab to compute these proportions, or you may extract the appropriate numbers from your table in part (a) and use R as a calculator. In either case, include your code and explain how you arrived at your answer.* -->
 
 ```{r, include=TRUE, message=FALSE}
+
+contingency <- table(cdc$exerany, cdc$genhlth)
+print.table(contingency)
+
+contingency_margins <- addmargins(contingency)
+print.table(contingency_margins)
+
+contingency_prop <- prop.table(contingency)
+print(contingency_prop)
+
+
 ```
 
 <!-- Use the space below to explain how you arrived at the above answer. -->
 
+The proportion of those who have exercised in the past month which is the yes to the variable exerany is 14914/20000, which is 0.7457. The proportion of the sample reporting excellent health is 4657/20000 or 0.23285. These numbers are supported by both `contingency_prop` and `contingency_margins`. 
 
 
 ### Part c) 
@@ -67,10 +86,16 @@ cdc <- cdc %>% mutate(genhlth = ordered(genhlth,
 <!-- Among those who exercised in the past month, what proportion of them report being in excellent health? What about among those who did not exercise in the past month? *There are a number of ways to arrive at these answers in R. The most direct way is to use prop.table(1) to get row percentages, but you may also use data subsetting, or extract the appropriate numbers from the contingency table and use R as a calculator. Any method is fine, but please show your work. * -->
 
 ```{r, include=TRUE}
+
+contingency_prop <- prop.table(contingency)
+print(contingency_prop)
+
+
 ```
 
 <!-- Please use the space below to state your result (in a complete sentence). -->
 
+Among the people who exersised in the past month, a proportion of about 0.19475 of them reported excellent health. Among the people who didn't exersize in the past month, only a proportion of 0.03810 of them reported excellent health. 
 
 
 ### Part d) 
@@ -78,7 +103,18 @@ cdc <- cdc %>% mutate(genhlth = ordered(genhlth,
 <!-- Make a stacked bar chart that represents the two-way table in part (a). Put the ``genhlth`` variable on the x-axis and color the bar stacks using ``exerany``.  -->
 
 ```{r, include=TRUE}
+
+bar_chart <- barplot(contingency_prop, 
+                     main = "Stacked Bar chart of General Health Vs. Exercize in Last Month", 
+                     sub = "Recorded by the Behavioral Risk Factor Surveillance System (BRFSS)", 
+                     xlab = "genhlth", 
+                     ylab = "exerany", 
+                     axes = TRUE)
 ```
+
+It seems as though most people would rate their health as very good, though those who exercize more make up more of the excellent, very good, good, and fair categories. The lighter grey represents those who have exercized within the past month and the darker grey represents those who didn't. I also see some response bias here where those who responded tended to have better health, which may perhaps mean that they had strong feelings for this topic. There doesn't seem to be a large 'no exercize group'. 
+
+
 
 ### Part e) 
 
