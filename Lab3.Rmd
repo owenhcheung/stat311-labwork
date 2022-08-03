@@ -329,6 +329,7 @@ This model seems to show a positive linear relationship between new_obs and runs
 
 <!-- Quiz Question: Which of the following variables had a negative relationship with `runs`? Do you think this answer makes sense? -->
 
+
 <!-- (1) wins -->
 <!-- (2) strikeouts -->
 <!-- (3) bat_avg -->
