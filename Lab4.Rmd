@@ -1,0 +1,294 @@
+---
+title: 'STAT 311 -- Lab 4'
+subtitle: 'Group ___'
+author: 'Group Member Names Here'
+date: 'Wednesday, August 10, 2022 @ 11:59pm'
+output:
+  html_document: default
+---
+
+```{r setup, include=FALSE, message=FALSE, warning=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+<!-- This lab is due on Wednesday, August 10 by midnight. No late work is accepted except for under extraordinary circumstances. -->
+
+<!-- Please answer ALL questions (including those that do not involve R) in the locations marked in this template. Remember to periodically **knit** your document to check that the output appears as you want it to; you will be turning in your knit html document. -->
+
+<!-- You will need to upload this document in CANVAS. Please be sure to check that your file was uploaded correctly. It does not hurt to screenshot verification of the upload as CANVAS can be glitchy on occasion. -->
+
+<!-- Please answer the question in the order in which they are posed. Write in complete sentences, and support your answers where asked. -->
+
+<!-- Do not un-comment the questions in this assignment. Making major modifications to the template will result in points lost. -->
+
+```{r, include=FALSE}
+# load necessary libraries
+library(ggplot2)
+library(tidyverse)
+```
+
+Throughout this assignment, please use comments to explain what your code is doing. To make a comment in a code chunk, start the line with `#`. An example of this can be seen below.
+
+```{r, include=TRUE}
+# I am going to print a comment
+print("a comment")
+```
+
+## Question 1: Pew Research
+
+In a Pew Research Center poll of 745 randomly selected American adults, 589 said that it is morally wrong to not report all income on tax returns.
+
+### Part a)
+
+<!-- In words, what is the parameter of interest? In order to receive full credit for this question, you will need to provide the following: (1) the people making up the population of interest and (2) the characteristic of interest (i.e. what we wish to learn from the population). -->
+
+
+
+
+### Part b)
+
+<!-- Use the results from the sample to construct a 98% confidence interval estimate of the parameter. -->
+
+<!-- Show your work below using $ $ formatting. -->
+
+
+
+
+### Part c)
+
+<!-- Assume that we plan to conduct another poll to determine whether the given sample results are accurate. How many adults would we need to poll in order to 98% confidence that the (quicck) margin of error is 0.02. -->
+
+<!-- Show your calculations below using $ $ formatting. -->
+
+
+
+
+
+## Question 2: Type 1 and Type 2 Errors
+
+### Part a)
+
+<!-- J & T each want to test if the proportion of adults in their neighborhood who have graduated from high school is 0.94, as claimed in the newspaper. -->
+
+<!-- J takes a random sample of 200 adults and uses $\alpha=0.05$. -->
+
+<!-- T takes a random sample of 500 adults and uses $\alpha=0.05$. -->
+
+<!-- Suppose the newspaper's percentae is actually right. -->
+
+#### i)
+
+<!-- Is it possible for either J or T to make a type 1 error? If yes, who is more likely to do so? If no, why not? -->
+
+
+
+
+#### ii)
+
+<!-- Is it possible for either J or T to make a type 2 error? If yes, who is more likely to do so? If no, why not? -->
+
+
+
+
+### Part b)
+
+<!-- J & T each want to test if the proportion of adults in their neighborhood who took chemistry in high school is 0.25, as claimed in the newspaper.  -->
+
+<!-- J takes a random sample of 200 adults and uses $\alpha=0.05$.  -->
+
+<!-- T takes a random sample of 500 adults and uses $\alpha=0.05$. -->
+
+<!-- Suppose the newspaper's percentae is actually wrong. -->
+
+#### i)
+
+<!-- Is it possible for either J or T to make a type 1 error? If yes, who is more likely to do so? If no, why not? -->
+
+
+
+
+#### ii)
+
+<!-- Is it possible for either J or T to make a type 2 error? If yes, who is more likely to do so? If no, why not? -->
+
+
+
+
+## Question 3: Confidence Intervals and Hypothesis Testing for a Proportion
+
+<!-- The goal is to repeat the first 10 exercises in the Confidence Interval and Hypothesis Testing for a Proportion lab that was covered in the quiz section by the TAs. -->
+
+<!-- See link https://anna-neufeld.github.io/Stat311/oiLabs/Week8/lab_6.html -->
+
+<!-- Before we begin, we will load the sample data. -->
+
+```{r, include=FALSE}
+download.file("http://www.openintro.org/stat/data/nc.RData", destfile = "nc.RData")
+load("nc.RData")
+```
+
+### Exercise 1
+
+<!-- What proportion of babies in this sample had low birth weight? Report your answer to 3 decimal places. -->
+
+
+
+
+### Exercise 2
+
+<!-- What proportion of babies born to `habit=="smoker"` mothers had low birth weight? -->
+
+<!-- Hint: if you are stuck, see exercise on Lab 2. Report your answer to 3 decimal places. -->
+
+<!-- Lab 2 can be found at this link: https://anna-neufeld.github.io/Stat311/oiLabs/Week8/lab_6.html -->
+
+
+
+
+### Exercise 3
+
+<!-- For this investigation, the random sample that we are interested in only includes the babies born to smoking mothers. Create a dataframe called nc_smoker that stores only the rows of the data set where `habit=="smoker"` using the below code chunk. -->
+
+<!-- Before running the below code chunk, you must un-comment it. You can do so by moving your cursor to the line you want to un-comment and doing Ctrl+Shift+C on your keyboard (Command+Shift+C for Mac). -->
+
+<!-- Hint: use the filter() function. -->
+
+```{r, include=TRUE}
+#nc_smoker <-    # fill in the rest of the code
+```
+
+
+### Exercise 4
+
+<!-- Make a 95% confidence statement about the parameter in context. -->
+
+
+
+
+### Exercise 5
+
+<!-- Set up a two-sided hypothesis test to test whether or not p=0.10 is plausible (write down the null and the alternative hypothesis). -->
+
+<!-- Use $$ $$ notation to state your hypotheses. -->
+
+
+
+
+### Exercise 6
+
+<!-- In a world where the null is true (i.e. p=0.10), what should the sampling distribution of $\hat{p}$ look like? Fill in the blanks in the code below to plot the sampling distribution. -->
+
+<!-- Before running this code, you must un-comment it. You can do so by moving your cursor to the line you want to un-comment and doing Ctrl+Shift+C on your keyboard (Command+Shift+C for Mac). -->
+
+```{r, include=TRUE}
+# null_p <-    ## Fill in
+# null_se <-   ## Fill in
+# ggplot(data = NULL, aes(x = seq(0,1,by=0.01))) +
+#         geom_blank() +
+#         stat_function(fun = dnorm, args = c(mean = null_p, sd = null_se))
+```
+
+### Exercise 7
+
+<!-- To see how our observed $\hat{p}$ compares to the sampling distribution, we can add it to the plot above as a red vertical line. Make the same ggplot as in the previous exercise, but now add `+geom_vline(xintercept=phat, col = "red")` to the end of the command (make sure phat is correctly define). -->
+
+<!-- Give your answer using the below code chunk. -->
+
+```{r, include=TRUE}
+
+```
+
+
+### Exercise 8
+
+<!-- Compute a p-value for this test and explain how it relates to the plot from the previous exercise. Do you have convincing evidence to suggest that the proportion of smoking mothers who have low weight babies is not equal to 0.1? -->
+
+<!-- Use the below code chunk for any code you use to answer this question. -->
+
+```{r, include=TRUE}
+
+```
+
+<!-- Please state your answer using the space below. -->
+
+
+
+
+### Exercise 9
+
+We're now going to create a fake population of 100,000 smoking mothers where 10% of them have low birthweight babies. The code below makes a list of 100,000 0s and 1s, where 90% are 0s (normal weight baby) and 10% are 1s (underweight baby).
+
+```{r, include=TRUE}
+popsize <- 100000
+pop <- data.frame(lowbirthweight = c(rep(0, 0.9*popsize), rep(1, 0.1*popsize)))
+```
+
+The below code takes our population data frame and creates 10000 samples of size 126. It then computes several summary statistics for each sample. It is important to understand the meaning of each value included in the `summarise()` function below.
+
+<!-- Note: You may need to run `install.packages("infer")` in the console prior to loading running the below code chunk. -->
+
+```{r, include=TRUE, message=FALSE, warning=FALSE}
+library(infer)
+set.seed(111)
+
+p0 <- 0.1
+n <- 126
+true_sd <- sqrt(p0*(1-p0)/n)
+
+results <- pop %>%
+        rep_sample_n(size = 126, reps = 10000) %>%
+        summarise(phat = mean(lowbirthweight), 
+                  se = sqrt(phat*(1-phat)/126),
+                  me = 1.96 * se,
+                  lower = phat - me,
+                  upper = phat + me,
+                  correct_CI = (lower <= p0 && upper >= p0),
+                  zscore = (phat-p0)/se,
+                  pval = 2*(1-pnorm(abs(zscore))),
+                  reject_null = pval <= 0.05)
+```
+
+<!-- Using the below sections, explain each piece of code in the summarise statement above in words. What does each column in results represent? What formula or concept was used to compute it? -->
+
+##### phat
+
+
+
+##### se
+
+
+
+##### me
+
+
+
+##### lower
+
+
+
+##### upper
+
+
+
+##### correct_CI
+
+
+
+##### zscore
+
+
+
+##### pval
+
+
+
+##### reject_null
+
+
+
+
+### Exercise 10
+
+<!-- What was the smallest sample proportion you observed? What about the largest sample proportion? -->
+
+
