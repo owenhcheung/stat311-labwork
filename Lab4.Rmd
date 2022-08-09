@@ -1,7 +1,7 @@
 ---
 title: 'STAT 311 -- Lab 4'
-subtitle: 'Group ___'
-author: 'Group Member Names Here'
+subtitle: 'Group 17'
+author: 'Steven Tran & Owen Cheung'
 date: 'Wednesday, August 10, 2022 @ 11:59pm'
 output:
   html_document: default
