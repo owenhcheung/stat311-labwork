@@ -293,11 +293,9 @@ ggplot(data = data.frame(x = seq(0,1,by=0.01)), aes(x = x)) +
 Z <- (0.143 - 0.1) / sqrt((0.1*0.9) / 126)
 
 
-
 ```
 
 <!-- Please state your answer using the space below. -->
-
 
 
 
