@@ -83,7 +83,11 @@ $ (0.756, 0.825) $
 <!-- Show your calculations below using $ $ formatting. -->
 
 
+$ n = ((2.33 * sqrt(0.5*0.5)) / 0.02)^2 $
 
+$ n = 3394$
+
+The sample size of adults would need to be at least 3394 in order to be 98% confident that the margin of error is 0.02. 
 
 
 ## Question 2: Type 1 and Type 2 Errors
@@ -102,12 +106,19 @@ $ (0.756, 0.825) $
 
 <!-- Is it possible for either J or T to make a type 1 error? If yes, who is more likely to do so? If no, why not? -->
 
+Yes, it is possible for either J or T to make a type 1 error. For J and T, this would mean rejecting the null hypothesis that the proportion of adults in their neighborhood who have graduated from high school is equal to 0.94 when that proportion is indeed true. 
 
+Both are equally likely to make a type 1 error since this error only depends on the value of $alpha and the sample size doesn't really matter in this case. 
 
 
 #### ii)
 
 <!-- Is it possible for either J or T to make a type 2 error? If yes, who is more likely to do so? If no, why not? -->
+
+
+No, it isn't possible for either J or T to make a type 2 error. This means that J and T reject the alternative hypothesis that the proportion of adults in their neighborhood who've graduated from high school does not equal to 0.94, when the proportion truly isn't equal to 0.94. However, we know that the proportion truly is equal to 0.94. 
+
+J is more likely to make a type 2 error since his sample size of 200 is a lot smaller than T's sample size of 500. This is because the error rate decreases as the sample size increases. It wouldn't really matter in this case though. 
 
 
 
@@ -127,12 +138,21 @@ $ (0.756, 0.825) $
 <!-- Is it possible for either J or T to make a type 1 error? If yes, who is more likely to do so? If no, why not? -->
 
 
+It is not possible for either J or T to make a Type 1 error since we know that the null hypothesis that the newspaper's proportion of adults in their neighborhood who took chemistry of 0.25 is incorrect in the first place so even if we reject the null hypothesis, it isn't true to begin with to make that error. 
+
+Type 1 error is also dependent in $alpha and not sample size so since they both have the same alpha value, they have equal likelihood of commiting an error if it was possible. It isn't in this case. 
+
+
 
 
 #### ii)
 
 <!-- Is it possible for either J or T to make a type 2 error? If yes, who is more likely to do so? If no, why not? -->
 
+
+Yes, it is possible for either J or T to make a type 2 error. This means that J and T reject the alternative hypothesis that the proportion of adults in their neighborhood who've taken high school chemostry from high school does not equal to 0.25, when the proportion truly isn't equal to 0.94. 
+
+J is more likely to make a type 2 error since his sample size of 200 is a lot smaller than T's sample size of 500. This is because the error rate decreases as the sample size increases. 
 
 
 
