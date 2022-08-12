@@ -337,39 +337,43 @@ results <- pop %>%
 
 <!-- Using the below sections, explain each piece of code in the summarise statement above in words. What does each column in results represent? What formula or concept was used to compute it? -->
 
-##### phat
+##### phat = mean(lowbirthweight)
+
+The point estimate of this piece is the mean of the babies born with a low birth weight
+
+
+phat = mean(lowbirthweight)
+
+
+##### se = sqrt(phat*(1-phat)/126)
+
+The standard error is 
+
+##### me = 1.96 * se
 
 
 
-##### se
+##### lower = phat - me
 
 
 
-##### me
+##### upper = phat + me
 
 
 
-##### lower
+#####  correct_CI = (lower <= p0 && upper >= p0)
 
 
 
-##### upper
+##### zscore = (phat-p0)/se
 
 
 
-##### correct_CI
+##### pval = 2*(1-pnorm(abs(zscore)))
 
 
 
-##### zscore
-
-
-
-##### pval
-
-
-
-##### reject_null
+##### reject_null = pval <= 0.05)
 
 
 
