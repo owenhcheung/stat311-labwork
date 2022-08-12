@@ -43,6 +43,8 @@ In a Pew Research Center poll of 745 randomly selected American adults, 589 said
 <!-- In words, what is the parameter of interest? In order to receive full credit for this question, you will need to provide the following: (1) the people making up the population of interest and (2) the characteristic of interest (i.e. what we wish to learn from the population). -->
 
 
+The parameter of interest, or the people making up the population of interest is the proportion of all American adults who said that it is morally wrong to not report all income on tax returns. We want to learn from the population if the true proportion is different from 589 / 745. 
+
 
 
 ### Part b)
@@ -52,6 +54,26 @@ In a Pew Research Center poll of 745 randomly selected American adults, 589 said
 <!-- Show your work below using $ $ formatting. -->
 
 
+phat <- 589 / 745
+
+n <- 745
+
+SE <- sqrt(phat * (1 - phat) / n)
+
+
+multiplier <- 2.33
+
+
+lower <- round(phat - multiplier*SE,3)
+
+
+
+upper <- round(phat + multiplier*SE,3)
+
+
+We are 98% confident that the true proportion of American adults who say that it is morally wrong to not report all income on tax returns to be between 0.756 to 0.825 $ (0.756, 0.825) $. 
+
+$ (0.756, 0.825) $
 
 
 ### Part c)
