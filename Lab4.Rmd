@@ -333,6 +333,8 @@ results <- pop %>%
                   zscore = (phat-p0)/se,
                   pval = 2*(1-pnorm(abs(zscore))),
                   reject_null = pval <= 0.05)
+
+print(results)
 ```
 
 <!-- Using the below sections, explain each piece of code in the summarise statement above in words. What does each column in results represent? What formula or concept was used to compute it? -->
@@ -341,40 +343,43 @@ results <- pop %>%
 
 The point estimate of this piece is the mean of the babies born with a low birth weight
 
-
 phat = mean(lowbirthweight)
 
 
 ##### se = sqrt(phat*(1-phat)/126)
 
-The standard error is 
+The standard error is the square route of the point estimate that we found before multiplied by 1 minus the point estimate divided by the sample size which would be 126
+
 
 ##### me = 1.96 * se
 
+The margin of error is the z-score for the specific confidence interval we are going for which would be a 95% confidence level multiplied by the standard error we found.
 
 
 ##### lower = phat - me
 
+The lower bound would be the point estimate minus the margin of error
+
 
 
 ##### upper = phat + me
-
+The upper bound would be the point estimate minus the margin of error
 
 
 #####  correct_CI = (lower <= p0 && upper >= p0)
-
+Correct CI tells us if the confidence interval was correct by checking if the lower bound was less than or equal to the null value as well as checking if the upper bound is greater than or equal to the null value
 
 
 ##### zscore = (phat-p0)/se
-
+The z-score would be the point estimate minus the null value divided by the standard error
 
 
 ##### pval = 2*(1-pnorm(abs(zscore)))
-
+The p value would be 2 times 1 minus the probability(pnorm of the z-score) which indicates that this is a 2 tailed test
 
 
 ##### reject_null = pval <= 0.05)
-
+Reject null determines if we reject the null hypothesis by checking if the p value was less than or equal to 0.05
 
 
 
