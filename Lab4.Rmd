@@ -173,7 +173,7 @@ load("nc.RData")
 
 <!-- What proportion of babies in this sample had low birth weight? Report your answer to 3 decimal places. -->
 
-
+nc %>% summarize(proportion_low_birth_weight = round(sum(lowbirthweight == "low")/length(lowbirthweight), 3))
 
 
 ### Exercise 2
@@ -185,6 +185,9 @@ load("nc.RData")
 <!-- Lab 2 can be found at this link: https://anna-neufeld.github.io/Stat311/oiLabs/Week8/lab_6.html -->
 
 
+nc %>% filter(habit == "smoker") %>%
+  summarize(prop_smoker_low_birth_weight = 
+              round(sum(lowbirthweight == "low") / length(lowbirthweight), 3))
 
 
 ### Exercise 3
@@ -197,6 +200,8 @@ load("nc.RData")
 
 ```{r, include=TRUE}
 #nc_smoker <-    # fill in the rest of the code
+
+nc_smoker <- nc %>% filter(habit == "smoker")
 ```
 
 
@@ -205,7 +210,24 @@ load("nc.RData")
 <!-- Make a 95% confidence statement about the parameter in context. -->
 
 
+phat <- 0.143
 
+n <- length(nc_smoker$lowbirthweight)
+
+SE <- sqrt(phat * (1 - phat) / n)
+
+
+multiplier <- 1.96
+
+lower <- round(phat - multiplier*SE,3)
+
+upper <- round(phat + multiplier*SE,3)
+
+lower 
+
+upper
+
+We are 95% confident that the true proportion of low birth weight babies born to smoking mothers lie between the interval of 0.082 to 0.204. 
 
 ### Exercise 5
 
@@ -214,6 +236,9 @@ load("nc.RData")
 <!-- Use $$ $$ notation to state your hypotheses. -->
 
 
+Null: $$Ho: p = 0.1$$
+
+Alternative: $$H_a: p != 0.1 $$
 
 
 ### Exercise 6
@@ -228,6 +253,13 @@ load("nc.RData")
 # ggplot(data = NULL, aes(x = seq(0,1,by=0.01))) +
 #         geom_blank() +
 #         stat_function(fun = dnorm, args = c(mean = null_p, sd = null_se))
+
+
+null_p <- 0.1
+null_se <- sqrt(null_p * (1 - null_p) / n)
+ggplot(data = data.frame(x = seq(0,1,by=0.01)), aes(x = x)) +
+        geom_blank() +
+        stat_function(fun = dnorm, args = c(mean = null_p, sd = null_se))
 ```
 
 ### Exercise 7
@@ -237,6 +269,15 @@ load("nc.RData")
 <!-- Give your answer using the below code chunk. -->
 
 ```{r, include=TRUE}
+
+
+null_p <- 0.1## Fill in
+null_se <- sqrt(null_p * (1 - null_p) / n)## Fill in
+ggplot(data = data.frame(x = seq(0,1,by=0.01)), aes(x = x)) +
+        geom_blank() +
+        stat_function(fun = dnorm, args = c(mean = null_p, sd = null_se)) +     geom_vline(xintercept=phat, col = "red")
+
+
 
 ```
 
@@ -248,6 +289,10 @@ load("nc.RData")
 <!-- Use the below code chunk for any code you use to answer this question. -->
 
 ```{r, include=TRUE}
+
+Z <- (0.143 - 0.1) / sqrt((0.1*0.9) / 126)
+
+
 
 ```
 
@@ -333,4 +378,14 @@ results <- pop %>%
 
 <!-- What was the smallest sample proportion you observed? What about the largest sample proportion? -->
 
+The smallest sample proportion I observed was 0.01587. 
 
+
+
+
+summary(results$phat)
+
+min(results$phat)
+max(results$phat)
+
+summary(results$zscore)
