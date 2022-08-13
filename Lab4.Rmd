@@ -82,6 +82,7 @@ $ (0.756, 0.825) $
 
 <!-- Show your calculations below using $ $ formatting. -->
 
+# Here, I'm taking the z score from the 98% confidence and multiplying it by the formula shown below. 
 
 $ n = ((2.33 * sqrt(0.5*0.5)) / 0.02)^2 $
 
@@ -118,7 +119,7 @@ Both are equally likely to make a type 1 error since this error only depends on 
 
 No, it isn't possible for either J or T to make a type 2 error. This means that J and T reject the alternative hypothesis that the proportion of adults in their neighborhood who've graduated from high school does not equal to 0.94, when the proportion truly isn't equal to 0.94. However, we know that the proportion truly is equal to 0.94. 
 
-J is more likely to make a type 2 error since his sample size of 200 is a lot smaller than T's sample size of 500. This is because the error rate decreases as the sample size increases. It wouldn't really matter in this case though. 
+J is more likely to make a type 2 error since his sample size of 200 is a lot smaller than T's sample size of 500. This is because the error rate decreases as the sample size increases. It wouldn't really matter in this case though, because IT IS IMPOSSIBLE TO MAKE A TYPE 2 ERROR HERE. 
 
 
 
@@ -167,14 +168,17 @@ J is more likely to make a type 2 error since his sample size of 200 is a lot sm
 ```{r, include=FALSE}
 download.file("http://www.openintro.org/stat/data/nc.RData", destfile = "nc.RData")
 load("nc.RData")
+library(dplyr)
+library(ggplot2)
 ```
 
 ### Exercise 1
 
 <!-- What proportion of babies in this sample had low birth weight? Report your answer to 3 decimal places. -->
 
+```{r, include=FALSE}
 nc %>% summarize(proportion_low_birth_weight = round(sum(lowbirthweight == "low")/length(lowbirthweight), 3))
-
+```
 
 ### Exercise 2
 
@@ -185,11 +189,12 @@ nc %>% summarize(proportion_low_birth_weight = round(sum(lowbirthweight == "low"
 <!-- Lab 2 can be found at this link: https://anna-neufeld.github.io/Stat311/oiLabs/Week8/lab_6.html -->
 
 
+```{r, include=FALSE}
 nc %>% filter(habit == "smoker") %>%
   summarize(prop_smoker_low_birth_weight = 
               round(sum(lowbirthweight == "low") / length(lowbirthweight), 3))
 
-
+```
 ### Exercise 3
 
 <!-- For this investigation, the random sample that we are interested in only includes the babies born to smoking mothers. Create a dataframe called nc_smoker that stores only the rows of the data set where `habit=="smoker"` using the below code chunk. -->
@@ -256,7 +261,7 @@ Alternative: $$H_a: p != 0.1 $$
 
 
 null_p <- 0.1
-null_se <- sqrt(null_p * (1 - null_p) / n)
+null_se <- sqrt(null_p * (1 - null_p) / 126)
 ggplot(data = data.frame(x = seq(0,1,by=0.01)), aes(x = x)) +
         geom_blank() +
         stat_function(fun = dnorm, args = c(mean = null_p, sd = null_se))
@@ -270,9 +275,9 @@ ggplot(data = data.frame(x = seq(0,1,by=0.01)), aes(x = x)) +
 
 ```{r, include=TRUE}
 
-
+phat <- 0.143
 null_p <- 0.1## Fill in
-null_se <- sqrt(null_p * (1 - null_p) / n)## Fill in
+null_se <- sqrt(0.1 * (1 - 0.1) / 126)## Fill in
 ggplot(data = data.frame(x = seq(0,1,by=0.01)), aes(x = x)) +
         geom_blank() +
         stat_function(fun = dnorm, args = c(mean = null_p, sd = null_se)) +     geom_vline(xintercept=phat, col = "red")
