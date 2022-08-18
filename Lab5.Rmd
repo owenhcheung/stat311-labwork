@@ -16,16 +16,21 @@ library(tidyverse)
 
 # Question 1
 ```{r}
+point_est = (23.12 - 17.90)
+# 5.22
+SE = sqrt((5.01^2 / 27) + (2.28^2 / 21))
+# 1.084978
 # a)
+# df = 20, so using t table for 99%, the statistic should be 2.528
+upper <- point_est + (2.528 * SE)
+lower <- point_est - (2.528 * SE)
+# (2.477177, 7.962823)
+# we are 99% confident that the average 
 
 # b)
 a = 0.01
 # H0: difference in means is 0, Ha: difference in means is not 0
-test = (23.12 - 17.90) - 0
-# 5.22
-test2 = sqrt((5.01^2 / 27) + (2.28^2 / 21))
-# 1.084978
-t = test / test2
+t = point_est - 0 / SE
 # t statistic = 4.81116
 df = min((27-1), (21-1))
 # df = 20
