@@ -23,7 +23,7 @@ a = 0.01
 # H0: difference in means is 0, Ha: difference in means is not 0
 test = (23.12 - 17.90) - 0
 # 5.22
-test2 = sqrt(((5.01^2) / 27) + ((2.28^2) / 21))
+test2 = sqrt((5.01^2 / 27) + (2.28^2 / 21))
 # 1.084978
 t = test / test2
 # t statistic = 4.81116
