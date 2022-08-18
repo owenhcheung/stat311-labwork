@@ -124,7 +124,7 @@ q <- 1 - phat
 
 Z <- (0.2 - 0.35) / sqrt((phat*q)((1/635)+(1/372)))
 
-Zstat <- -5.26
+Zstat <- 5.26
 
 
 Since p-val = 1 > 0.05, we fail to reject the null hypothesis. We do not have convincing evidence that there is a difference in the proportion of Democrats and Republicans who said that driving while impaired by marijuana poses a very serious threat. 
@@ -132,11 +132,12 @@ Since p-val = 1 > 0.05, we fail to reject the null hypothesis. We do not have co
 
 ### B)
 
-### i) It would not change. The sample statistic is the proportion of democrats subtracted by the proportion of republicans, or vice versa.  
 
-### ii) It would be different, because in hypothesis testing, you are pooling both proportions to create the phat and in confidence interval you're adding both confidence interval. 
+i) It would not change. The sample statistic is the proportion of democrats subtracted by the proportion of republicans, or vice versa.  
 
-### iii) (0.09, 0.21)
+ii) It would be different, because in hypothesis testing, you are pooling both proportions to create the phat and in confidence interval you re adding both confidence interval.
+
+iii) (0.09, 0.21)
 
 We are 95% confident that the difference in democrats and republicans on their opionin that marijuana poses a very serious threat to be between 0.09 and 0.21. 
 
@@ -157,10 +158,37 @@ grouped <- handout1 %>%
   group_by(SEX) %>%
   summarise_at(vars(SALARY), list(mean_salary = mean))
 grouped
+
+
+
+grouped_sd <- handout1 %>%
+  group_by(SEX) %>%
+  summarise_at(vars(SALARY), list(sd_salary = sd))
+grouped_sd
 # seems like a difference in means question
 # hypothesis
 # H0: no difference, Ha: difference
 
+Hypothesis: 
+  
+Ho: μ1 = μ2
+
+
+Ho: μ1 =/= μ2
+
+
+Where μ1 is the population mean for the males and μ2 is the population mean for the females. 
+
+
+
+s <- ((80*7.868) + (68*10.17)) / (148)
+seed <- sqrt((s/81)+ (s/69))
+
+lower <- (0.044 - 1.96*seed)
+upper <- (0.044 + 1.96*seed)
+
+
+We are 95% confident that the mean difference in commitment scores with respect to sex lies between -0.92 and 1.0. Since 0 lies between these intervals, we do not have convincing evidence that there is a difference in commitment scores with respect to sex. 
 
 ```
 
